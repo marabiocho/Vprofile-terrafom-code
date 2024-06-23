@@ -130,6 +130,7 @@ resource "aws_route_table" "private_rt_2" {
 
 # Internet-facing Application Load Balancer
 resource "aws_lb" "application" {
+  vpc_id = aws_vpc.vprofile_vpc.id
   name               = "vprofile-lb"
   internal           = false
   load_balancer_type = "application"
@@ -146,6 +147,7 @@ resource "aws_lb" "application" {
 
 # Listener for Application Load Balancer
 resource "aws_lb_listener" "http_listener" {
+  vpc_id = aws_vpc.vprofile_vpc.id
   load_balancer_arn = aws_lb.application.arn
   port              = 80
   protocol          = "HTTP"
@@ -158,6 +160,7 @@ resource "aws_lb_listener" "http_listener" {
 
 # Target Group for Application Load Balancer
 resource "aws_lb_target_group" "application" {
+  vpc_id = aws_vpc.vprofile_vpc.id
   name     = "vprofile-tg"
   port     = 8080
   protocol = "HTTP"
