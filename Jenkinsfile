@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'kantin10/terraform-aws-cli:latest'}
+        docker { image 'kantin10/terraform-aws-cli:v1'}
             
     }
 
